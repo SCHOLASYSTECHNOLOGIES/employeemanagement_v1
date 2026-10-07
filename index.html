@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="version" content="Employee Portal - New Apps Script Endpoint"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Scholasys Employee Management Portal</title>
+<style>
+:root{--navy:#081a35;--blue:#1167d8;--cyan:#18b8d6;--bg:#f4f7fb;--card:#fff;--text:#172033;--muted:#6c778a;--line:#e3e8f0;--green:#15966c;--red:#d84b55;--amber:#d58a13;--shadow:0 14px 40px rgba(12,34,67,.09)}*{box-sizing:border-box}body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text)}button,input,select,textarea{font:inherit}button{cursor:pointer}.splash{position:fixed;inset:0;background:radial-gradient(circle at 50% 30%,#153a6c,#06142a 65%);display:grid;place-items:center;z-index:99;color:#fff}.splash-inner{text-align:center;animation:rise .9s ease}.splash img{width:150px;filter:drop-shadow(0 14px 30px #0007);animation:logo 1.3s ease}.splash h1{margin:22px 0 6px;font-size:25px}.splash p{margin:0;color:#47708d;letter-spacing:.18em;text-transform:uppercase;font-size:12px}.splash .enter{margin-top:34px;opacity:0;animation:appear .7s 1.8s forwards;background:linear-gradient(90deg,var(--blue),var(--cyan));border:0;color:#fff;padding:13px 26px;border-radius:11px;font-weight:700}.app{display:none;min-height:100vh}.top{height:76px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:10}.brand{display:flex;align-items:center;gap:12px}.brand img{width:48px;height:48px;object-fit:contain}.brand strong{font-size:16px}.brand small{display:block;color:var(--muted);margin-top:2px}.login{min-height:calc(100vh - 76px);display:grid;place-items:center;padding:30px}.login-card{width:min(460px,100%);background:#fff;border:1px solid var(--line);border-radius:22px;padding:34px;box-shadow:var(--shadow)}.login-card h2{margin:0 0 8px}.login-card p{color:var(--muted)}.field{margin:15px 0}.field label{display:block;font-size:13px;font-weight:700;margin-bottom:7px}.field input,.field select,.field textarea{width:100%;border:1px solid #d9e0ea;border-radius:10px;padding:11px;background:#fff;outline:none}.field textarea{min-height:110px;resize:vertical}.primary,.secondary,.danger{border:0;border-radius:10px;padding:11px 16px;font-weight:700}.primary{background:linear-gradient(90deg,var(--blue),var(--cyan));color:#fff}.secondary{background:#edf3fa;color:#16345c}.danger{background:#fff0f1;color:#b42d38}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}.tab{border:1px solid var(--line);background:#fff;padding:9px 13px;border-radius:10px;font-weight:700;color:#526079}.tab.active{background:#0c2c55;color:#fff;border-color:#0c2c55}.shell{display:grid;grid-template-columns:240px 1fr;min-height:calc(100vh - 76px)}.side{background:var(--navy);padding:22px 14px;color:#d9e6f7}.side .role{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#7da2cb;margin:0 12px 15px}.nav{width:100%;border:0;background:transparent;color:#cfe0f4;text-align:left;padding:12px;border-radius:9px;margin:3px 0;font-weight:650}.nav:hover,.nav.active{background:#12335e;color:#fff}.main{padding:28px;max-width:1500px;width:100%;margin:auto}.title{display:flex;justify-content:space-between;align-items:flex-start;gap:20px}.title h1{margin:0 0 6px}.title p{margin:0;color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:22px 0}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 5px 18px rgba(20,45,80,.04)}.metric{font-size:28px;font-weight:800;margin-top:8px}.label{color:var(--muted);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}.section{margin-top:22px}.section h3{margin:0 0 13px}.table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}.table th,.table td{padding:12px;border-bottom:1px solid var(--line);text-align:left;font-size:13px}.table th{background:#f8fafc;color:#5a667b}.badge{display:inline-flex;padding:5px 8px;border-radius:999px;font-size:11px;font-weight:800}.present,.approved{background:#e6f7f0;color:#087654}.absent,.declined,.rejected{background:#fff0f1;color:#b52e39}.pending{background:#fff7e4;color:#a66a06}.info{background:#e9f3ff;color:#1464bb}.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}.day{background:#fff;border:1px solid var(--line);min-height:78px;border-radius:10px;padding:8px}.day .n{font-weight:800}.day.present-day{border-color:#8bd7bd;background:#f0fbf7}.day.absent-day{border-color:#efb4b9;background:#fff6f6}.day small{display:block;margin-top:9px;font-weight:800;font-size:10px}.calendar-head{display:grid;grid-template-columns:repeat(7,1fr);gap:7px;margin-bottom:7px;color:var(--muted);font-size:11px;font-weight:800;text-align:center}.upload{border:1px dashed #9eb2c9;border-radius:12px;padding:18px;background:#f8fbff}.camera{display:grid;grid-template-columns:1fr 1fr;gap:16px}.camera video,.camera img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:12px;background:#07172c}.photo{max-width:160px;border-radius:10px}.school-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.school{padding:15px;border:1px solid var(--line);border-radius:12px;background:#fff;font-weight:750}.muted{color:var(--muted)}.hidden{display:none!important}.modal{position:fixed;inset:0;background:#06142aaa;display:grid;place-items:center;z-index:50;padding:20px}.modalbox{background:#fff;border-radius:18px;width:min(650px,100%);max-height:90vh;overflow:auto;padding:24px}.right{margin-left:auto}.actions{display:flex;gap:8px;flex-wrap:wrap}.notice{padding:13px 15px;border-left:4px solid var(--blue);background:#f3f8ff;border-radius:8px;margin:9px 0}.footer-note{font-size:11px;color:var(--muted);margin-top:16px}@keyframes logo{0%{opacity:0;transform:scale(.5) rotate(-8deg)}60%{opacity:1;transform:scale(1.08)}100%{transform:scale(1)}}@keyframes appear{to{opacity:1}}@keyframes rise{from{transform:translateY(14px);opacity:0}to{transform:none;opacity:1}}@keyframes spin{to{transform:rotate(360deg)}}@media(max-width:950px){.shell{grid-template-columns:1fr}.side{display:flex;overflow:auto;gap:5px}.side .role{display:none}.nav{white-space:nowrap}.grid{grid-template-columns:repeat(2,1fr)}.school-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.top{padding:0 14px}.brand strong{font-size:13px}.main{padding:16px}.grid{grid-template-columns:1fr 1fr}.camera{grid-template-columns:1fr}.calendar .day{min-height:60px}.day small{font-size:9px}}
+</style>
+<style>
+:root{
+ --navy:#071a33;--navy2:#0b2850;--blue:#0877d9;--cyan:#12b8d4;--ink:#14243a;
+ --muted:#708096;--line:#e6ebf2;--bg:#f5f8fc;--white:#fff;--success:#138a67;--danger:#c23d4a;
+ --shadow:0 18px 55px rgba(9,31,59,.08);--shadow2:0 8px 28px rgba(9,31,59,.07)
+}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(180deg,#f7faff 0,#f3f6fa 100%);color:var(--ink);letter-spacing:.01em}
+button,input,select,textarea{font-family:inherit}
+.splash{background:linear-gradient(135deg,#ffffff 0%,#f7fbff 55%,#eef7fb 100%);overflow:hidden;color:#071a33}.splash:before{content:"";position:absolute;width:520px;height:520px;border:1px solid rgba(8,119,217,.10);border-radius:50%;animation:spin 18s linear infinite}.splash:after{content:"";position:absolute;width:700px;height:700px;border:1px solid rgba(18,184,212,.08);border-radius:50%;animation:spin 28s linear infinite reverse}
+.splash:before,.splash:after{content:"";position:absolute;border:1px solid rgba(87,205,232,.18);border-radius:50%;width:560px;height:560px;left:50%;top:50%;transform:translate(-50%,-50%);animation:orbit 8s linear infinite}
+.splash:after{width:760px;height:760px;animation-duration:13s;animation-direction:reverse}
+.splash-inner{position:relative;z-index:2;max-width:720px;padding:40px 25px}
+.splash img{width:180px;height:180px;object-fit:contain;filter:drop-shadow(0 20px 45px rgba(0,0,0,.35));animation:logo 1.2s cubic-bezier(.2,.8,.2,1)}
+.splash h1{font-size:clamp(23px,3vw,34px);font-weight:750;letter-spacing:-.02em;margin:22px 0 8px}
+.splash p{font-size:12px;letter-spacing:.28em;color:#8ddff0}
+.splash .enter{position:relative;z-index:3;margin-top:38px;padding:14px 28px;border-radius:12px;background:linear-gradient(110deg,#0877d9,#12b8d4);box-shadow:0 10px 35px rgba(18,184,212,.25);transition:.2s transform,.2s box-shadow}
+.splash .enter:hover{transform:translateY(-2px);box-shadow:0 15px 42px rgba(18,184,212,.35)}
+.top{height:82px;padding:0 34px;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);box-shadow:0 1px 0 rgba(20,40,70,.04)}
+.brand{gap:13px}.brand img{width:54px;height:54px}.brand strong{font-size:15px;letter-spacing:.01em}.brand small{font-size:11px;letter-spacing:.04em}
+.login{min-height:calc(100vh - 82px);background:radial-gradient(circle at 50% 0,#eaf6ff 0,transparent 36%);position:relative}
+.login-card{border-radius:24px;padding:38px;box-shadow:var(--shadow);border-color:#e1e8f1;position:relative;overflow:hidden}
+.login-card:before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:linear-gradient(90deg,var(--blue),var(--cyan))}
+.login-card h2{font-size:27px;letter-spacing:-.03em}.login-card p{font-size:13px}
+.tabs{background:#f2f6fa;padding:5px;border-radius:13px}.tab{flex:1;border:0;background:transparent;border-radius:9px;padding:10px}.tab.active{background:#0b2850;box-shadow:0 4px 12px rgba(7,26,51,.16)}
+.field label{color:#34465d;font-size:12px;text-transform:uppercase;letter-spacing:.06em}.field input,.field select,.field textarea{border-color:#dfe6ee;padding:12px 13px;border-radius:11px;transition:.18s box-shadow,.18s border-color}.field input:focus,.field select:focus,.field textarea:focus{border-color:#62b7e9;box-shadow:0 0 0 4px rgba(8,119,217,.08)}
+.primary{background:linear-gradient(100deg,#0877d9,#12b8d4);box-shadow:0 8px 22px rgba(8,119,217,.16)}
+.secondary{background:#eef4fa;border:1px solid #dce6f0}.danger{border:1px solid #f0cdd1}
+.shell{grid-template-columns:252px 1fr;background:#f5f8fc}
+.side{background:linear-gradient(180deg,#071a33,#0a2344);padding:24px 14px;border-right:1px solid rgba(255,255,255,.06);position:sticky;top:82px;height:calc(100vh - 82px);overflow:auto}
+.side:after{content:"SCHOLASYS\A EMPLOYEE MANAGEMENT";white-space:pre;display:block;color:rgba(255,255,255,.26);font-size:9px;letter-spacing:.18em;line-height:1.8;padding:24px 12px 0}
+.side .role{font-size:10px;color:#80cfe0;letter-spacing:.14em;margin:0 12px 14px}.nav{border:1px solid transparent;padding:11px 13px;color:#b9cce1;border-radius:10px;transition:.16s background,.16s color,.16s transform}.nav:hover{background:rgba(255,255,255,.06);color:#fff;transform:translateX(2px)}.nav.active{background:linear-gradient(90deg,rgba(8,119,217,.9),rgba(18,184,212,.55));color:#fff;border-color:rgba(255,255,255,.08);box-shadow:0 8px 22px rgba(0,0,0,.12)}
+.main{padding:34px 36px 50px;max-width:1600px}.title{margin-bottom:22px}.title h1{font-size:28px;letter-spacing:-.035em}.title p{font-size:13px;color:#748398}
+.grid{gap:18px;margin:20px 0}.card{border-radius:17px;border-color:#e3e9f0;box-shadow:var(--shadow2);transition:transform .18s,box-shadow .18s}.card:hover{box-shadow:0 12px 35px rgba(9,31,59,.08)}
+.metric{font-size:30px;letter-spacing:-.04em}.label{font-size:10px;letter-spacing:.12em;color:#7b8ba0}.badge{border:1px solid transparent;letter-spacing:.03em}.present{border-color:#bfe8da}.absent,.declined,.rejected{border-color:#f2c9ce}.pending{border-color:#f1dfb5}
+.table{box-shadow:var(--shadow2);border-radius:15px}.table th{font-size:10px;text-transform:uppercase;letter-spacing:.08em}.table td{background:#fff}.table tr:last-child td{border-bottom:0}
+.calendar-head{color:#7b899b;text-transform:uppercase;letter-spacing:.08em}.day{border-radius:12px;min-height:84px;transition:.15s transform,.15s box-shadow}.day:hover{transform:translateY(-2px);box-shadow:0 7px 18px rgba(9,31,59,.07)}.day.present-day{background:linear-gradient(180deg,#f3fcf8,#eaf8f3);border-color:#b8e4d4}.day.absent-day{background:linear-gradient(180deg,#fff8f8,#fff2f3);border-color:#efd0d4}.day.pending-day{background:linear-gradient(180deg,#fffaf0,#fff6df);border-color:#efd9a5}.day.upcoming-day{background:#fff;border-color:var(--line)}.day.unmarked-day{background:#fafbfd;border-color:#e4e9f0}.day small{letter-spacing:.08em}
+.school-grid{gap:14px}.school{border-radius:13px;box-shadow:0 4px 15px rgba(9,31,59,.04);transition:.15s transform,.15s border-color}.school:hover{transform:translateY(-2px);border-color:#9ecce8}
+.notice{border-left:3px solid #159bd0;background:linear-gradient(90deg,#f3f9ff,#fff);box-shadow:0 3px 12px rgba(9,31,59,.03);padding:15px 16px}
+.camera video,.camera img{box-shadow:inset 0 0 0 1px rgba(255,255,255,.08),0 10px 25px rgba(7,26,51,.16)}.upload{background:linear-gradient(145deg,#f8fbff,#f0f6fc);border-color:#b9cadb;min-height:150px;display:grid;place-items:center;text-align:center;color:#6c7d91}
+.modal{backdrop-filter:blur(5px)}.modalbox{box-shadow:0 25px 70px rgba(3,20,40,.22);border:1px solid #e0e7ef}
+.footer-note{line-height:1.6}
+@keyframes orbit{to{transform:translate(-50%,-50%) rotate(360deg)}}
+@media(max-width:950px){.side{position:static;height:auto;border-right:0;border-bottom:1px solid rgba(255,255,255,.06)}.side:after{display:none}.main{padding:24px}.top{padding:0 18px}}
+@media(max-width:600px){.top{height:72px}.brand img{width:44px;height:44px}.brand small{display:none}.main{padding:18px}.login-card{padding:28px 22px}.splash img{width:145px;height:145px}.splash h1{font-size:22px}.grid{grid-template-columns:1fr 1fr}.shell{display:block}}
+</style>
+</head>
+<body>
+<div id="splash" class="splash"><div class="splash-inner"><img src="STS New logo(3).png"><h1>Scholasys Technologies and Solutions Pvt Ltd</h1><p>Employee Management Portal</p><button class="enter" onclick="enterPortal()">ENTER PORTAL</button></div></div>
+<div id="app" class="app"><header class="top"><div class="brand"><img src="STS New logo(3).png"><div><strong>Scholasys Employee Management</strong><small>Operations &amp; Training Workspace</small></div></div><div id="topUser" class="muted" style="font-size:12px;font-weight:650"></div></header><div id="loginView" class="login"><div class="login-card"><h2>Secure Portal Access</h2><p>Choose your access area and sign in.</p><div class="tabs"><button class="tab active" onclick="setLogin('employee',this)">Employee</button><button class="tab" onclick="setLogin('master',this)">Master</button></div><div id="masterRoleWrap" class="field hidden"><label>Master Section</label><select id="masterRole"><option>Mumbai</option><option>Delhi</option><option>Operational Manager</option><option>Management</option></select></div><div class="field"><label>User ID</label><input id="loginId" placeholder="Enter ID"></div><div class="field"><label>Password / Passcode</label><input id="loginPw" type="password" placeholder="Enter password"></div><button class="primary" style="width:100%" onclick="login()">Sign In</button><div class="footer-note">Authorized personnel only. Use your assigned portal credentials.</div><div id="loginMsg" class="footer-note"></div></div></div><div id="portal" class="hidden"></div></div>
+<div id="modal" class="modal hidden"><div class="modalbox" id="modalBox"></div></div>
+<script>
+const employees=[
+{id:'STS01',name:'Devadathan',schools:['D. Y. Patil Dnyanpushpa Vidya Niketan'],city:'Mumbai',role:'Employee',locationAttendanceEnabled:true},
+{id:'STS02',name:'Prashant',schools:['Literacy India'],city:'Delhi',role:'Employee',locationAttendanceEnabled:true},
+{id:'STS03',name:'Komal',schools:['The Modern School'],city:'Delhi',role:'Employee',locationAttendanceEnabled:true},
+{id:'STS04',name:'Vibin V',schools:['The Modern School'],city:'Delhi',role:'Employee',locationAttendanceEnabled:true},
+{id:'STS05',name:'Chaitali Suravkar',schools:['D. Y. Patil Dnyanpushpa Vidya Niketan'],city:'Mumbai',role:'Employee',locationAttendanceEnabled:true},
+{id:'STS06',name:'Vinita Patil',schools:['D. Y. Patil Dnyanpushpa Vidya Niketan'],city:'Mumbai',role:'Employee',locationAttendanceEnabled:true},
+{id:'STS07',name:'Anjali Gupta',schools:['Guru School'],city:'Mumbai',role:'Employee',locationAttendanceEnabled:true},
+{id:'STS08',name:'Hemal Shingwan',schools:['Bright Future High School'],city:'Mumbai',role:'Employee',locationAttendanceEnabled:true},
+{id:'STS09',name:'Supriya Santosh Tajine',schools:['KCA International School'],city:'Mumbai',role:'Employee',locationAttendanceEnabled:true},
+{id:'STS10',name:'Prachi Sagar Meshram',schools:['KCA International School'],city:'Mumbai',role:'Employee',locationAttendanceEnabled:true},
+{id:'STS11',name:'Ayushi Yadav',schools:['KCA International School'],city:'Mumbai',role:'Employee',locationAttendanceEnabled:true},
+{id:'STS12',name:'Vedika Salavkar',schools:['KCA International School'],city:'Mumbai',role:'Employee',locationAttendanceEnabled:true},
+{id:'STS13',name:'Malvika M Nair',schools:['KCA International School'],city:'Mumbai',role:'Employee',locationAttendanceEnabled:true},
+{id:'STS14',name:'Aryan',schools:['Literacy India'],city:'Delhi',role:'Employee',locationAttendanceEnabled:true},
+{id:'STS15',name:'Vishnu Das',schools:['Thrissur Office'],city:'Thrissur',role:'Media / Graphics Designer',locationAttendanceEnabled:false,officeOnly:true},
+{id:'STS16',name:'Edwin Thomas',schools:['Thrissur Office'],city:'Thrissur',role:'Employee',locationAttendanceEnabled:false,officeOnly:true},
+{id:'STS17',name:'Maria David',schools:['Thrissur Office'],city:'Thrissur',role:'Employee',locationAttendanceEnabled:false,officeOnly:true}];
+const masters=[
+{id:'STS0RD',name:'Devadathan',section:'Mumbai',city:'Mumbai',trainerId:'STS01'},
+{id:'STS0RP',name:'Prashant',section:'Delhi',city:'Delhi',trainerId:'STS02'},
+{id:'STS0MP',name:'Preethi M',section:'Operational Manager / Management'},
+{id:'STS0MK',name:'Kiran Kumar',section:'Operational Manager'},
+{id:'STS0MJ',name:'Jojy',section:'Management'},
+{id:'STS0MT',name:'Tony',section:'Management'},
+{id:'STS0MJA',name:'Jazan',section:'Management'}];
+const PASSWORDS={employees:{"STS01": "0211", "STS02": "5836", "STS03": "7419", "STS04": "2648", "STS05": "9152", "STS06": "4387", "STS07": "6724", "STS08": "3509", "STS09": "8261", "STS10": "1947", "STS11": "5073", "STS12": "7685", "STS13": "3216", "STS14": "9540", "STS15": "4728", "STS16": "6153", "STS17": "8046"},masters:{"STS0RD": "6173", "STS0RP": "8426", "STS0MP": "3958", "STS0MK": "7041", "STS0MJ": "5284", "STS0MT": "1639", "STS0MJA": "8862"}};
+const schools=['Guru School','Bright Future High School','KCA International School','D. Y. Patil Dnyanpushpa Vidya Niketan','The Modern School','Literacy India'];
+let mode='employee', current=null, stream=null, attendanceCanvas=document.createElement('canvas');
+let attendanceActionQueue=Promise.resolve();
+const attendanceActionsInFlight=new Set();
+let saveQueue=Promise.resolve();
+let pendingMutations=0;
+let remoteSyncBusy=false;
+const API_URL='https://script.google.com/macros/s/AKfycbw5OCZnI14FE9MK8nNNFqow7_jV4bf2Z-4glrt4xk_boLXqUoHE1rdNfRo2i2m-vp3-/exec';
+const SCHOOL_MAP_VERSION='v4';
+let remoteReady=false;
+async function api(action,payload={}){
+  if(!API_URL || API_URL.includes('PASTE_')) return null;
+  try{
+    const r=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action,...payload})});
+    return await r.json();
+  }catch(e){ console.warn('API',action,e); return null; }
+}
+async function loadRemote(force=false){
+  if(!force && (remoteSyncBusy || pendingMutations>0)) return false;
+  remoteSyncBusy=true;
+  try{
+    const r=await api('load');
+    if(r&&r.ok&&r.db){
+      db=r.db;
+      ensureEmployeeData();
+      saveLocal();
+      remoteReady=true;
+      return true;
+    }
+    ensureEmployeeData();
+    return false;
+  }finally{ remoteSyncBusy=false; }
+}
+function saveLocal(){localStorage.setItem('stsEmployeeDB',JSON.stringify(db));}
+function save(){
+  const run=async()=>{
+    pendingMutations++;
+    try{
+      saveLocal();
+      const snapshot=JSON.parse(JSON.stringify(db));
+      const r=await api('save',{db:snapshot});
+      if(!r||!r.ok) throw new Error((r&&r.error)||'Database synchronization failed');
+      if(r.db){ db=r.db; ensureEmployeeData(); saveLocal(); }
+      return db;
+    }finally{ pendingMutations=Math.max(0,pendingMutations-1); }
+  };
+  saveQueue=saveQueue.then(run,run);
+  return saveQueue;
+}
+
+let db=JSON.parse(localStorage.getItem('stsEmployeeDB')||'null')||{
+  attendance:[],
+  assignments:[{id:1,title:'Prepare Grade 6 Robotics Activity',description:'Prepare components and lesson flow for the upcoming robotics session.',assignedTo:'STS01',due:'2026-10-02',priority:'High',status:'Pending',file:null}],
+  notices:[{id:1,title:'Monthly planning',text:'Please keep your school activity records updated before the monthly review.',date:'2026-09-30'}],
+  leaves:[],weekly:[],monthly:[],concerns:[],
+  allocations:employees.reduce((a,t)=>{a[t.id]=t.schools.slice();return a},{}),
+  schoolMapVersion:'v4'
+};
+function ensureEmployeeData(){
+  db.allocations=db.allocations||{};
+  if(db.schoolMapVersion!=='v4'){
+    employees.forEach(t=>{ db.allocations[t.id]=t.schools.slice(); });
+    db.schoolMapVersion='v4';
+  }else{
+    employees.forEach(t=>{ if(!Array.isArray(db.allocations[t.id])) db.allocations[t.id]=t.schools.slice(); });
+  }
+  db.attendance=Array.isArray(db.attendance)?db.attendance:[];
+  db.assignments=Array.isArray(db.assignments)?db.assignments:[];
+  db.notices=Array.isArray(db.notices)?db.notices:[];
+  db.leaves=Array.isArray(db.leaves)?db.leaves:[];
+  db.weekly=Array.isArray(db.weekly)?db.weekly:[];
+  db.monthly=Array.isArray(db.monthly)?db.monthly:[];
+  db.concerns=Array.isArray(db.concerns)?db.concerns:[];
+}
+ensureEmployeeData();
+function latestAttendanceFor(employeeId,date){
+  const rows=db.attendance.filter(a=>String(a.trainerId)===String(employeeId)&&String(a.date)===String(date));
+  if(!rows.length)return null;
+  return rows.slice().sort((a,b)=>String(a.createdAt||a.id).localeCompare(String(b.createdAt||b.id))).pop();
+}
+function todayKey(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+
+function enterPortal(){document.getElementById('splash').style.display='none';document.getElementById('app').style.display='block'}
+function setLogin(x,b){mode=x;document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));b.classList.add('active');document.getElementById('masterRoleWrap').classList.toggle('hidden',x!=='master')}
+async function login(){let id=document.getElementById('loginId').value.trim().toUpperCase(),pw=document.getElementById('loginPw').value; if(mode==='employee'){let t=employees.find(x=>x.id===id);if(!t||pw!==(PASSWORDS.employees[id]||'')){document.getElementById('loginMsg').textContent='Invalid employee ID or password.';return;}current={...t,type:'employee'};}else{let m=masters.find(x=>x.id===id);if(!m||pw!==(PASSWORDS.masters[id]||'')){document.getElementById('loginMsg').textContent='Invalid master ID or passcode.';return;}current={...m,type:'master',masterRole:document.getElementById('masterRole').value};} document.getElementById('loginView').classList.add('hidden');document.getElementById('topUser').textContent=current.name+' · '+current.id; localStorage.setItem('stsEmployeeSession',JSON.stringify(current)); localStorage.setItem('stsEmployeeMode',mode); localStorage.setItem('stsEmployeeActive','Overview'); await loadRemote(); mode==='master'?renderMaster('Overview'):renderEmployee('Overview')}
+function nav(items,active){return `<aside class="side"><div class="role">${current.type==='employee'?'Employee Workspace':current.masterRole}</div>${items.map(x=>`<button class="nav ${active===x[0]?'active':''}" onclick="${x[1]}">${x[0]}</button>`).join('')}<button class="nav" onclick="logout()">Sign Out</button></aside>`}
+function layout(title,sub,items,active,content){document.getElementById('portal').innerHTML=`<div class="shell">${nav(items,active)}<main class="main"><div class="title"><div><h1>${title}</h1><p>${sub}</p></div></div>${content}</main></div>`}
+function renderEmployee(active='Overview'){window.activeEmployee=active; localStorage.setItem('stsEmployeeActive',active);document.getElementById('portal').classList.remove('hidden');let items=[['Overview',"renderEmployee('Overview')"],['Attendance',"renderEmployee('Attendance')"],['Assignments',"renderEmployee('Assignments')"],['Reports',"renderEmployee('Reports')"],['Leave Application',"renderEmployee('Leave')"],['Profile & Security',"renderEmployee('Profile')"]];let c='';if(active==='Overview')c=employeeOverview();if(active==='Attendance')c=employeeAttendance();if(active==='Assignments')c=employeeAssignments();if(active==='Reports')c=employeeReports();if(active==='Leave')c=employeeLeave();if(active==='Profile')c=profile();layout('Employee Dashboard','Daily operations, attendance, assignments and reporting',items,active,c)}
+function employeeOverview(){let today=todayKey(),a=latestAttendanceFor(current.id,today),as=db.assignments.filter(x=>x.assignedTo===current.id),isDenied=a&&a.status==='Denied',isPending=a&&a.status==='Pending Inspection';return `<div class="grid"><div class="card"><div class="label">Today</div><div class="metric">${isDenied?'Absent':isPending?'Pending':a?'Present':'Not Marked'}</div><span class="badge ${isDenied?'absent':isPending?'pending':a?'present':'pending'}">${isDenied?'Attendance declined by Master':isPending?'Awaiting inspection':a?'Attendance approved':'Action required'}</span></div><div class="card"><div class="label">${((employees.find(t=>t.id===current.id)||{}).officeOnly)?'Office':'Schools'}</div><div class="metric">${(db.allocations[current.id]||[]).length}</div><div class="muted">${((employees.find(t=>t.id===current.id)||{}).officeOnly)?'Office allocation':'Assigned schools'}</div></div><div class="card"><div class="label">Assignments</div><div class="metric">${as.filter(x=>x.status!=='Completed').length}</div><div class="muted">Open tasks</div></div><div class="card"><div class="label">Pending Leave</div><div class="metric">${db.leaves.filter(x=>x.trainerId===current.id&&x.status==='Pending').length}</div><div class="muted">Applications</div></div></div><div class="section card"><h3>Announcements</h3>${db.notices.length?db.notices.map(n=>`<div class="notice"><b>${n.title}</b><div>${n.text}</div><small class="muted">${n.date}</small></div>`).join(''):'<p class="muted">No announcements.</p>'}</div><div class="section card"><h3>${((employees.find(t=>t.id===current.id)||{}).officeOnly)?'Office Allocation':'Assigned Schools'}</h3><div class="school-grid">${(db.allocations[current.id]||[]).map(s=>`<div class="school">${s}</div>`).join('')}</div></div>`}
+async function startCamera(){try{stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'user'},audio:false});document.getElementById('video').srcObject=stream}catch(e){alert('Camera permission is required to capture attendance. Please allow camera access in the browser.')}}
+function stopCamera(){if(stream){stream.getTracks().forEach(t=>t.stop());stream=null}}
+function employeeAttendance(){let today=todayKey(),a=latestAttendanceFor(current.id,today),denied=a&&a.status==='Denied',pending=a&&a.status==='Pending Inspection';return `<div class="card"><div class="title"><div><h3>Daily Attendance</h3><p>${new Date().toLocaleDateString('en-IN',{weekday:'long',day:'2-digit',month:'long',year:'numeric'})}</p></div><span class="badge ${denied?'absent':pending?'pending':a?'present':'pending'}">${denied?'Absent':pending?'Pending Inspection':a?'Present':'Not Marked'}</span></div>${a&&!denied?`<div class="section"><p><b>Recorded:</b> ${a.time}</p>${a.photo?`<img class="photo" src="${a.photo}">`:''}<p class="muted">${pending?'Attendance is awaiting Master inspection.':'Attendance approved by Master.'}</p></div>`:denied?`<div class="section"><div class="notice" style="border-left-color:var(--red)"><b>Attendance declined by Master.</b><div>Your attendance for today is marked <b>Absent</b>. You may capture a new attendance photo from the lab if required.</div></div>${attendanceCaptureMarkup()}</div>`:`<div class="section">${attendanceCaptureMarkup()}</div>`}</div><div class="section card"><div class="title"><div><h3>Attendance Calendar</h3><p>Green = Present · Red = Absent · Amber = Pending</p></div><span class="badge info">Current Month</span></div>${calendar()}</div>`}
+function attendanceCaptureMarkup(){return `<div class="camera"><div><video id="video" autoplay playsinline></video><div class="actions" style="margin-top:10px"><button class="secondary" onclick="startCamera()">Enable Camera</button><button class="primary" onclick="captureAttendance()">Capture & Mark Attendance</button></div></div><div><div id="preview" class="upload">Camera preview will appear on the left. Capture one image for today's attendance.</div></div></div>`}
+async function captureAttendance(){
+  const v=document.getElementById('video');
+  if(!v||!v.srcObject)return alert('Enable the camera first.');
+  const today=todayKey();
+  const existing=latestAttendanceFor(current.id,today);
+  if(existing&&existing.status!=='Denied'){stopCamera();return alert('Attendance is already recorded for today.');}
+  attendanceCanvas.width=v.videoWidth||640; attendanceCanvas.height=v.videoHeight||400;
+  attendanceCanvas.getContext('2d').drawImage(v,0,0,attendanceCanvas.width,attendanceCanvas.height);
+  const photo=attendanceCanvas.toDataURL('image/jpeg',.72);
+  const id='AT-'+current.id+'-'+today+'-'+Date.now();
+  const up=await api('uploadFile',{folder:'attendance',fileName:`${current.id}-${today}-${Date.now()}.jpg`,mimeType:'image/jpeg',data:photo.split(',')[1]});
+  const rec={id,trainerId:current.id,name:current.name,date:today,time:new Date().toLocaleTimeString('en-IN'),photo:up&&up.ok?up.url:photo,status:'Pending Inspection',school:(db.allocations[current.id]||[])[0]||'',createdAt:new Date().toISOString()};
+  const saved=await api('addAttendance',{record:rec});
+  if(!saved||!saved.ok)return alert('Attendance could not be synchronized with the master system. Please try again.');
+  if(saved.attendance) db.attendance=saved.attendance; else db.attendance=[...(db.attendance||[]),saved.record||rec];
+  saveLocal(); stopCamera(); renderEmployee('Attendance');
+}
+function calendar(){let now=new Date(),y=now.getFullYear(),m=now.getMonth(),days=new Date(y,m+1,0).getDate(),first=new Date(y,m,1).getDay(),today=todayKey(),cells='';for(let i=0;i<first;i++)cells+='<div></div>';for(let d=1;d<=days;d++){let ds=`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`,a=latestAttendanceFor(current.id,ds),future=ds>today,cls=future?'upcoming-day':'unmarked-day',label='';if(!future&&a){if(a.status==='Approved'){cls='present-day';label='PRESENT'}else if(a.status==='Denied'){cls='absent-day';label='ABSENT'}else if(a.status==='Pending Inspection'){cls='pending-day';label='PENDING'}}cells+=`<div class="day ${cls}"><span class="n">${d}</span><small>${future?'':(label||'NOT MARKED')}</small></div>`}return `<div class="calendar-head"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div><div class="calendar">${cells}</div>`}
+function employeeAssignments(){let as=db.assignments.filter(x=>x.assignedTo===current.id);return `<div class="section">${as.length?as.map(a=>{let closed=new Date()>new Date(a.due+'T23:59:59');return `<div class="card" style="margin-bottom:12px"><div class="title"><div><h3>${a.title}</h3><p>${a.description}</p></div><span class="badge ${a.priority==='High'?'rejected':'info'}">${a.priority}</span></div><p><b>Due:</b> ${a.due} · <b>Status:</b> ${a.status}</p>${a.file?`<p class="muted">Uploaded: ${a.file.name}</p>`:''}<div class="actions">${!closed&&a.status!=='Completed'?`<label class="secondary">Upload <input type="file" hidden onchange="uploadAssignment(${a.id},this)"></label>`:''}${closed?'<span class="badge rejected">Upload closed after due date</span>':a.file?'<span class="badge present">Uploaded</span>':''}</div></div>`}).join(''):'<div class="card">No assignments currently.</div>'}</div>`}
+async function uploadAssignment(id,input){let f=input.files[0];if(!f)return;let a=db.assignments.find(x=>x.id===id);if(new Date()>new Date(a.due+'T23:59:59'))return alert('The upload window has closed.');if(f.size>8*1024*1024)return alert('Please keep the upload below 8 MB.');let data=await fileToDataURL(f);let up=await api('uploadFile',{folder:'assignments',fileName:f.name,mimeType:f.type||'application/octet-stream',data:data.split(',')[1]});a.file={name:f.name,type:f.type,size:f.size,url:up&&up.ok?up.url:''};a.status='Submitted';await save();renderEmployee('Assignments');alert('Assignment uploaded.')}
+function employeeReports(){const myConcerns=(db.concerns||[]).filter(x=>x.trainerId===current.id);return `<div class="grid"><div class="card"><div class="label">Weekly Report</div><div class="muted">Upload PDF, Excel or other report file.</div><button class="primary" style="margin-top:14px" onclick="reportForm('Weekly')">Upload Weekly Report</button></div><div class="card"><div class="label">Monthly Report</div><div class="muted">Upload PDF, Excel or other report file.</div><button class="primary" style="margin-top:14px" onclick="reportForm('Monthly')">Upload Monthly Report</button></div><div class="card"><div class="label">Any Concern</div><div class="muted">Report a problem or request support from management.</div><button class="secondary" style="margin-top:14px" onclick="concernForm()">Report a Concern</button></div></div><div class="section card"><h3>Submitted Reports</h3>${[...db.weekly,...db.monthly].filter(x=>x.trainerId===current.id).map(x=>`<div class="notice"><b>${x.type} Report</b><div>${x.fileUrl?`<a href="${x.fileUrl}" target="_blank">${x.fileName||'Open uploaded file'}</a>`:(x.fileName||x.text||'Uploaded file')}</div><small>${x.date}</small></div>`).join('')||'<p class="muted">No reports submitted yet.</p>'}</div><div class="section card"><h3>My Concerns & Solutions</h3>${myConcerns.map(c=>`<div class="notice"><b>${c.status==='Resolved'?'Resolved':'Open'}</b><div style="margin-top:6px">${c.text}</div><small>${c.date}</small>${c.reply?`<div class="solution" style="margin-top:10px;padding:10px;border-radius:10px;background:#f1f7ff"><b>Solution from Master</b><div style="margin-top:4px">${c.reply}</div></div>`:'<div class="muted" style="margin-top:8px">No solution received yet.</div>'}</div>`).join('')||'<p class="muted">No concerns submitted yet.</p>'}</div>`}
+function reportForm(type){showModal(`<h3>Upload ${type} Report</h3><div class="field"><label>Select file</label><input id="reportFile" type="file" accept=".pdf,.xls,.xlsx,.csv,.doc,.docx"></div><div class="actions"><button class="primary" onclick="submitReport('${type}')">Upload</button><button class="secondary" onclick="closeModal()">Cancel</button></div>`)}
+async function submitReport(type){const f=document.getElementById('reportFile').files[0];if(!f)return alert('Select a file.');if(f.size>8*1024*1024)return alert('Please keep the report below 8 MB.');const data=await fileToDataURL(f);const up=await api('uploadFile',{folder:'reports',fileName:f.name,mimeType:f.type||'application/octet-stream',data:data.split(',')[1]});const r={id:Date.now(),trainerId:current.id,name:current.name,type,date:new Date().toISOString().slice(0,10),fileName:f.name,fileType:f.type,fileSize:f.size,status:'Submitted',fileUrl:up&&up.ok?up.url:''};db[type==='Weekly'?'weekly':'monthly'].unshift(r);await save();closeModal();renderEmployee('Reports');}
+function fileToDataURL(file){return new Promise((resolve,reject)=>{const fr=new FileReader();fr.onload=()=>resolve(fr.result);fr.onerror=reject;fr.readAsDataURL(file)})}
+function employeeLeave(){return `<div class="card"><h3>Leave Application</h3><div class="field"><label>From</label><input type="date" id="lf"></div><div class="field"><label>To</label><input type="date" id="lt"></div><div class="field"><label>Reason</label><textarea id="lr"></textarea></div><button class="primary" onclick="applyLeave()">Submit Leave Application</button></div><div class="section card"><h3>My Applications</h3>${db.leaves.filter(x=>x.trainerId===current.id).map(x=>`<div class="notice"><b>${x.from} → ${x.to}</b><div>${x.reason}</div><span class="badge ${x.status==='Approved'?'approved':x.status==='Declined'?'declined':'pending'}">${x.status}</span><small> · ${x.lastActionBy||'Pending review'}</small></div>`).join('')||'<p class="muted">No applications.</p>'}</div>`}
+async function applyLeave(){let f=document.getElementById('lf').value,t=document.getElementById('lt').value,r=document.getElementById('lr').value.trim();if(!f||!t||!r)return alert('Complete all leave fields.');db.leaves.push({id:Date.now(),trainerId:current.id,name:current.name,from:f,to:t,reason:r,status:'Pending',history:[]});await save();renderEmployee('Leave')}
+function profile(){let officeOnly=(employees.find(t=>t.id===current.id)||{}).officeOnly;return `<div class="card"><h3>${current.name}</h3><p class="muted">${current.id}</p><h3 class="section">${officeOnly?'Office Allocation':'Assigned Schools'}</h3><div class="school-grid">${(db.allocations[current.id]||[]).map(s=>`<div class="school">${s}</div>`).join('')}</div><h3 class="section">Security</h3><div class="actions"><button class="secondary" onclick="changePassword()">Change Password</button><button class="secondary" onclick="changeName()">Change Name</button></div></div>`}
+async function renderMaster(active='Overview'){window.activeMaster=active;localStorage.setItem('stsEmployeeActive',active);document.getElementById('portal').classList.remove('hidden');const loaded=await loadRemote();if(!loaded&&remoteReady===false){/* keep local cache visible if backend is temporarily unavailable */}let items=[['Overview',"renderMaster('Overview')"],['Employees',"renderMaster('Employees')"],['Schools & Allocation',"renderMaster('Schools')"],['Attendance Control',"renderMaster('AttendanceControl')"],['Attendance Records',"renderMaster('Attendance')"],['Attendance Inspection',"renderMaster('Inspection')"],['Leave Approvals',"renderMaster('Leave')"],['Reports',"renderMaster('Reports')"],['Assignments',"renderMaster('Assignments')"],['Announcements',"renderMaster('Announcements')"],['Profile & Security',"renderMaster('Profile')"]];let c=active==='Overview'?masterOverview():active==='Employees'?masterEmployees():active==='Schools'?masterSchools():active==='AttendanceControl'?masterAttendanceControl():active==='Attendance'?masterAttendance():active==='Inspection'?inspection():active==='Leave'?masterLeave():active==='Reports'?masterReports():active==='Assignments'?masterAssignments():active==='Announcements'?masterAnnouncements():masterProfile();layout('Master Management Dashboard',current.masterRole+' · Full management control',items,active,c)}
+function masterOverview(){let today=todayKey();return `<div class="grid"><div class="card"><div class="label">Employees</div><div class="metric">${employees.length}</div><div class="muted">Active employee accounts</div></div><div class="card"><div class="label">Present Today</div><div class="metric">${db.attendance.filter(x=>x.date===today&&x.status!=='Denied').length}</div><div class="muted">Attendance records</div></div><div class="card"><div class="label">Pending Leave</div><div class="metric">${db.leaves.filter(x=>x.status==='Pending').length}</div><div class="muted">Requests awaiting action</div></div><div class="card"><div class="label">Pending Inspection</div><div class="metric">${db.attendance.filter(x=>x.status==='Pending Inspection').length}</div><div class="muted">Attendance images</div></div></div><div class="section card"><div class="title"><div><h3>Attendance Control</h3><p class="muted">Open the dedicated control screen to approve, deny, add or remove today’s attendance records.</p></div><button class="primary" onclick="renderMaster('AttendanceControl')">Open Attendance Control</button></div></div><div class="section card"><h3>Today’s Operations</h3><div class="grid" style="margin:12px 0 0"><div><b>${db.assignments.filter(a=>a.status==='Submitted').length}</b><div class="muted">Submitted assignments</div></div><div><b>${db.weekly.length+db.monthly.length}</b><div class="muted">Reports received</div></div><div><b>${(db.concerns||[]).filter(c=>c.status==='Open').length}</b><div class="muted">Open concerns</div></div></div></div>`}
+function masterEmployees(){return `<div class="card"><h3>Employee Directory</h3><table class="table"><tr><th>ID</th><th>Name</th><th>Role</th><th>City</th><th>Schools</th></tr>${employees.map(t=>`<tr><td>${t.id}</td><td>${t.name}</td><td>${t.role}</td><td>${t.city}</td><td>${(db.allocations[t.id]||[]).join(', ')}</td></tr>`).join('')}</table></div>`}
+function masterSchools(){return `<div class="grid">${schools.map(s=>`<div class="card"><h3>${s}</h3><div class="metric">${employees.filter(t=>(db.allocations[t.id]||[]).includes(s)).length}</div><div class="muted">Allocated employees</div><button class="secondary" style="margin-top:12px" onclick="schoolDetail('${s}')">View School Data</button></div>`).join('')}</div><div class="card"><h3>Allocate Employee</h3><div class="field"><label>Employee</label><select id="at"><option value="">Select</option>${employees.map(t=>`<option value="${t.id}">${t.name} (${t.id})</option>`).join('')}</select></div><div class="field"><label>School</label><select id="as"><option value="">Select</option>${schools.map(s=>`<option>${s}</option>`).join('')}</select></div><button class="primary" onclick="allocate()">Save Allocation</button></div>`}
+async function allocate(){let id=document.getElementById('at').value,s=document.getElementById('as').value;if(!id||!s)return alert('Select employee and school.');db.allocations[id]=db.allocations[id]||[];if(!db.allocations[id].includes(s))db.allocations[id].push(s);await save();renderMaster('Schools')}
+function schoolDetail(s){let ts=employees.filter(t=>(db.allocations[t.id]||[]).includes(s));showModal(`<h2>${s}</h2><p class="muted">School-level employee and activity view.</p><table class="table"><tr><th>Employee</th><th>ID</th><th>Attendance This Month</th></tr>${ts.map(t=>`<tr><td>${t.name}</td><td>${t.id}</td><td>${db.attendance.filter(a=>a.trainerId===t.id&&a.date.startsWith(new Date().toISOString().slice(0,7))).length}</td></tr>`).join('')}</table><div class="actions" style="margin-top:15px"><button class="secondary" onclick="closeModal()">Close</button></div>`)}
+function masterAttendanceControl(){const today=todayKey();const rows=employees.map(t=>({t,a:latestAttendanceFor(t.id,today)}));return `<div class="card"><div class="title"><div><h3>Attendance Control</h3><p>Central control for today’s employee attendance. Approve, deny, add manually, or remove an incorrect record.</p></div><span class="badge info">${rows.filter(x=>x.a&&x.a.status==='Pending Inspection').length} Pending</span></div><div class="actions" style="margin:14px 0"><button class="secondary" onclick="loadRemote().then(()=>renderMaster('AttendanceControl'))">Refresh</button></div><table class="table"><tr><th>Employee</th><th>ID</th><th>School / Office</th><th>Status</th><th>Control</th></tr>${rows.map(({t,a})=>{const status=a?a.status:'Not Marked';const badge=status==='Approved'?'present':status==='Denied'?'absent':status==='Pending Inspection'?'pending':'info';return `<tr><td>${t.name}</td><td>${t.id}</td><td>${(db.allocations[t.id]||[]).join(', ')||'-'}</td><td><span class="badge ${badge}">${status}</span></td><td><div class="actions">${a&&a.status==='Pending Inspection'?`<button class="primary" onclick="inspectAttendance('${a.id}',true)">Approve</button><button class="danger" onclick="inspectAttendance('${a.id}',false)">Deny</button>`:''}${(!a||a.status==='Denied')?`<button class="secondary" onclick="manualMarkPresent('${t.id}')">Mark Present</button>`:''}${a?`<button class="danger" onclick="removeAttendance('${a.id}')">Remove</button>`:''}</div></td></tr>`}).join('')}</table></div>`}
+function masterAttendance(){return `<div class="card"><div class="title"><div><h3>Monthly Attendance Records</h3><p>Attendance summary for the current month.</p></div><span class="badge info">${new Date().toLocaleString('en-IN',{month:'long',year:'numeric'})}</span></div><div class="field"><label>Employee</label><select onchange="window.attendanceEmployee=this.value;renderMaster('Attendance')"><option value="">All Employees</option>${employees.map(t=>`<option value="${t.id}" ${window.attendanceEmployee===t.id?'selected':''}>${t.name}</option>`).join('')}</select></div>${monthlyTable()}</div>`}
+function monthlyTable(){let month=new Date().toISOString().slice(0,7),rows=(window.attendanceEmployee?employees.filter(t=>t.id===window.attendanceEmployee):employees);return `<table class="table"><tr><th>Employee</th><th>Present</th><th>Absent</th><th>Pending</th><th>Attendance %</th></tr>${rows.map(t=>{const rs=db.attendance.filter(a=>a.trainerId===t.id&&a.date.startsWith(month));const byDate={};rs.forEach(a=>{byDate[a.date]=a;});const latest=Object.values(byDate);const p=latest.filter(a=>a.status==='Approved').length;const abs=latest.filter(a=>a.status==='Denied').length;const pending=latest.filter(a=>a.status==='Pending Inspection').length;const d=new Date().getDate();const pct=Math.round(p/Math.max(d,1)*100);return `<tr><td>${t.name} (${t.id})</td><td><span class="badge present">${p}</span></td><td><span class="badge absent">${abs}</span></td><td><span class="badge pending">${pending}</span></td><td>${pct}%</td></tr>`}).join('')}</table>`}
+function inspection(){const seen=new Set();const pending=db.attendance.filter(a=>a.status==='Pending Inspection').sort((a,b)=>String(b.createdAt||b.id).localeCompare(String(a.createdAt||a.id))).filter(a=>{const key=a.trainerId+'|'+a.date;if(seen.has(key))return false;seen.add(key);return true;});return `<div class="card"><div class="title"><div><h3>Attendance Image Inspection</h3><p class="muted">Review captured attendance images before they are marked present.</p></div><span class="badge pending">${pending.length} Pending</span></div>${pending.length?pending.map(a=>`<div class="card" style="margin-top:12px"><div class="title"><div><b>${a.name} (${a.trainerId})</b><p>${a.date} · ${a.time} · ${a.school||'Unassigned'}</p></div><span class="badge pending">Pending Inspection</span></div>${a.photo?`<img class="photo" src="${a.photo}">`:'<div class="upload">No image URL stored — manually verify before approval.</div>'}<div class="actions" style="margin-top:10px"><button class="primary" onclick="inspectAttendance('${a.id}',true)">Approve Attendance</button><button class="danger" onclick="inspectAttendance('${a.id}',false)">Deny — Not From Lab</button></div></div>`).join(''):'<p class="muted">No attendance images pending inspection.</p>'}</div>`}
+async function updateAttendanceWithRetry_(updated){
+  let lastError='Attendance update failed';
+  for(let attempt=0;attempt<12;attempt++){
+    const r=await api('updateAttendanceBatch',{records:[updated]});
+    if(r&&r.ok&&r.records&&r.records.length){
+      if(r.attendance) db.attendance=r.attendance;
+      return r.records[0];
+    }
+    lastError=(r&&r.error)||lastError;
+    if(!r || !r.retryable) throw new Error(lastError);
+    // Give the Apps Script lock a short chance to clear, then retry.
+    await new Promise(resolve=>setTimeout(resolve,700+attempt*350));
+  }
+  throw new Error('Attendance server remained busy after automatic retries. '+lastError);
+}
+function enqueueAttendanceAction_(id,ok){
+  if(attendanceActionsInFlight.has(String(id)))return;
+  attendanceActionsInFlight.add(String(id));
+  const task=async()=>{
+    const a=db.attendance.find(x=>String(x.id)===String(id));
+    if(!a)return;
+    const updated=Object.assign({},a,{status:ok?'Approved':'Denied',inspectedBy:current.id,inspectedAt:new Date().toISOString()});
+    try{
+      await updateAttendanceWithRetry_(updated);
+      saveLocal();
+    }catch(err){
+      alert('Attendance update could not be synchronized.\n\n'+err.message);
+      throw err;
+    }finally{attendanceActionsInFlight.delete(String(id));}
+  };
+  attendanceActionQueue=attendanceActionQueue.then(task,task);
+  attendanceActionQueue.then(()=>{if(current&&mode==='master')renderMaster(window.activeMaster||'Inspection');}).catch(()=>{if(current&&mode==='master')renderMaster(window.activeMaster||'Inspection');});
+}
+function inspectAttendance(id,ok){enqueueAttendanceAction_(id,ok);}
+async function manualMarkPresent(employeeId){
+  const employee=employees.find(t=>t.id===employeeId); if(!employee)return;
+  const today=todayKey(); const existing=latestAttendanceFor(employeeId,today);
+  if(existing&&existing.status==='Approved')return alert('Attendance is already marked Present.');
+  const rec={id:'MAN-'+employeeId+'-'+today+'-'+Date.now(),trainerId:employeeId,name:employee.name,date:today,time:new Date().toLocaleTimeString('en-IN'),photo:'',status:'Approved',school:(db.allocations[employeeId]||[])[0]||'',inspectedBy:current.id,inspectedAt:new Date().toISOString(),createdAt:new Date().toISOString()};
+  const r=await api('addAttendance',{record:rec});
+  if(!r||!r.ok)return alert((r&&r.error)||'Manual attendance could not be synchronized.');
+  db.attendance=r.attendance||[...(db.attendance||[]),r.record||rec]; saveLocal(); renderMaster('AttendanceControl');
+}
+async function removeAttendance(id){
+  if(!confirm('Remove this attendance record?'))return;
+  const r=await api('deleteAttendance',{id:String(id)});
+  if(!r||!r.ok)return alert((r&&r.error)||'Attendance could not be removed.');
+  db.attendance=r.attendance||db.attendance.filter(a=>String(a.id)!==String(id)); saveLocal(); renderMaster('AttendanceControl');
+}
+
+function masterLeave(){let pending=db.leaves.filter(l=>l.status==='Pending'),processed=db.leaves.filter(l=>l.status!=='Pending');return `<div class="card"><div class="title"><div><h3>Leave Applications</h3><p class="muted">Pending requests stay expanded for action. Processed requests are minimized below.</p></div><span class="badge pending">${pending.length} Pending</span></div>${pending.length?pending.map(l=>`<div class="card" style="margin-top:12px"><div class="title"><div><b>${l.name} (${l.trainerId})</b><p>${l.from} → ${l.to}</p></div><span class="badge pending">Pending</span></div><p>${l.reason}</p><div class="actions"><button class="primary" onclick="leaveAction(${l.id},'Approved')">Approve</button><button class="danger" onclick="leaveAction(${l.id},'Declined')">Decline</button></div></div>`).join(''):'<p class="muted">No pending leave applications.</p>'}</div><div class="section card"><h3>Processed Applications</h3>${processed.length?processed.map(l=>`<details style="border-bottom:1px solid var(--line);padding:12px 0"><summary style="cursor:pointer;font-weight:750">${l.name} (${l.trainerId}) · ${l.from} → ${l.to} · <span class="badge ${l.status==='Approved'?'approved':'declined'}">${l.status}</span></summary><p>${l.reason}</p><p class="muted">${(l.history||[]).map(h=>h.actor+' '+h.action).join(' → ')}</p><div class="actions"><button class="secondary" onclick="leaveAction(${l.id},'${l.status==='Approved'?'Declined':'Approved'}')">Override</button></div></details>`).join(''):'<p class="muted">No processed applications.</p>'}</div>`}
+async function leaveAction(id,status){let l=db.leaves.find(x=>x.id===id);if(!l)return;l.status=status;l.lastActionBy=current.id;l.history=l.history||[];l.history.push({actor:current.id,action:status});await save();renderMaster('Leave')}
+function concernForm(){showModal(`<h3>Any Concern</h3><div class="field"><label>Concern</label><textarea id="concernText" placeholder="Describe the problem or support needed"></textarea></div><div class="actions"><button class="primary" onclick="submitConcern()">Send Concern</button><button class="secondary" onclick="closeModal()">Cancel</button></div>`)}
+async function submitConcern(){const text=document.getElementById('concernText').value.trim();if(!text)return alert('Enter your concern.');db.concerns=db.concerns||[];db.concerns.unshift({id:Date.now(),trainerId:current.id,name:current.name,text,date:new Date().toISOString().slice(0,10),status:'Open',reply:''});await save();closeModal();renderEmployee('Reports');}
+function masterReports(){return `<div class="grid"><div class="card"><h3>Weekly Reports</h3>${db.weekly.map(r=>`<div class="notice"><b>${r.trainerId}</b> · ${r.date}<div>${r.fileUrl?`<a href="${r.fileUrl}" target="_blank">${r.fileName||'Open uploaded file'}</a>`:(r.fileName||r.text||'Uploaded file')}</div></div>`).join('')||'<p class="muted">No weekly reports.</p>'}</div><div class="card"><h3>Monthly Reports</h3>${db.monthly.map(r=>`<div class="notice"><b>${r.trainerId}</b> · ${r.date}<div>${r.fileUrl?`<a href="${r.fileUrl}" target="_blank">${r.fileName||'Open uploaded file'}</a>`:(r.fileName||r.text||'Uploaded file')}</div></div>`).join('')||'<p class="muted">No monthly reports.</p>'}</div><div class="card"><h3>Any Concern</h3>${(db.concerns||[]).map(c=>`<div class="notice"><b>${c.name} (${c.trainerId})</b><div>${c.text}</div><small>${c.date}</small>${c.reply?`<div class="muted">Reply: ${c.reply}</div>`:''}<button class="secondary" style="margin-top:8px" onclick="replyConcern(${c.id})">${c.reply?'Update Solution':'Send Solution'}</button></div>`).join('')||'<p class="muted">No concerns.</p>'}</div></div>`}
+function replyConcern(id){const c=(db.concerns||[]).find(x=>x.id===id);if(!c)return;showModal(`<h3>Send Solution</h3><div class="field"><label>Response</label><textarea id="replyText">${c.reply||''}</textarea></div><button class="primary" onclick="saveConcernReply(${id})">Send Solution</button>`)}
+async function saveConcernReply(id){const c=(db.concerns||[]).find(x=>x.id===id);if(!c)return;c.reply=document.getElementById('replyText').value.trim();c.status='Resolved';await save();closeModal();renderMaster('Reports')}
+function masterAssignments(){return `<div class="card"><h3>Create Assignment</h3><div class="field"><label>Title</label><input id="nt"></div><div class="field"><label>Description</label><textarea id="nd"></textarea></div><div class="field"><label>Assign To</label><select id="na">${employees.map(t=>`<option value="${t.id}">${t.name} (${t.id})</option>`).join('')}</select></div><div class="field"><label>Priority</label><select id="np"><option>Normal</option><option>High</option><option>Critical</option></select></div><div class="field"><label>Due Date</label><input id="n due" type="date"></div><button class="primary" onclick="createAssignment()">Send Assignment</button></div><div class="section card"><h3>Assignments &amp; Submissions</h3>${db.assignments.map(a=>`<div class="notice"><b>${a.title}</b> · ${a.assignedTo} · due ${a.due}<div>${a.status}${a.file&&a.file.url?` · <a href="${a.file.url}" target="_blank">Open Upload</a>`:''}</div></div>`).join('')}</div>`}
+async function createAssignment(){let title=document.getElementById('nt').value.trim(),desc=document.getElementById('nd').value.trim(),to=document.getElementById('na').value,priority=document.getElementById('np').value,due=document.querySelector('[id="n due"]').value;if(!title||!due)return alert('Title and due date are required.');db.assignments.push({id:Date.now(),title,description:desc,assignedTo:to,due,priority,status:'Pending',file:null});await save();renderMaster('Assignments')}
+function masterAnnouncements(){return `<div class="card"><h3>Publish Announcement</h3><div class="field"><label>Title</label><input id="anT"></div><div class="field"><label>Message</label><textarea id="anM"></textarea></div><button class="primary" onclick="publishNotice()">Publish</button></div><div class="section card"><h3>Published Notices</h3>${db.notices.map(n=>`<div class="notice"><b>${n.title}</b><div>${n.text}</div><small>${n.date}</small></div>`).join('')}</div>`}
+async function publishNotice(){let t=document.getElementById('anT').value.trim(),m=document.getElementById('anM').value.trim();if(!t||!m)return alert('Complete notice.');db.notices.unshift({id:Date.now(),title:t,text:m,date:new Date().toLocaleDateString('en-IN')});await save();renderMaster('Announcements')}
+function changeName(){const n=prompt('Enter new name',current.name);if(n&&n.trim()){current.name=n.trim();localStorage.setItem('stsEmployeeSession',JSON.stringify(current));document.getElementById('topUser').textContent=current.name+' · '+current.id;mode==='master'?renderMaster('Profile'):renderEmployee('Profile')}}
+function changePassword(){const p=prompt('Enter new password');if(p&&p.trim()) alert('Password change request saved for this demo. Connect backend account storage to persist it.')}
+function masterProfile(){return `<div class="card"><h3>${current.name}</h3><div class="actions section"><button class="secondary" onclick="changeName()">Change Name</button><button class="secondary" onclick="changePassword()">Change Password</button></div></div>`}
+function showModal(x){document.getElementById('modalBox').innerHTML=x;document.getElementById('modal').classList.remove('hidden')}function closeModal(){document.getElementById('modal').classList.add('hidden')}
+window.addEventListener('load', async ()=>{
+  const sess=localStorage.getItem('stsEmployeeSession');
+  if(sess){
+    try{ current=JSON.parse(sess); mode=localStorage.getItem('stsEmployeeMode')||current.type||'employee'; document.getElementById('splash').style.display='none'; document.getElementById('app').style.display='block'; document.getElementById('loginView').classList.add('hidden'); document.getElementById('topUser').textContent=current.name+' · '+current.id; await loadRemote(); const active=localStorage.getItem('stsEmployeeActive')||'Overview'; mode==='master'?renderMaster(active):renderEmployee(active); }catch(e){ localStorage.removeItem('stsEmployeeSession'); }
+  }
+});
+let lastRemoteFingerprint='';
+setInterval(async()=>{
+  if(!current||API_URL.includes('PASTE_')||pendingMutations>0||remoteSyncBusy)return;
+  const activeEl=document.activeElement;
+  const editing=activeEl && ['INPUT','TEXTAREA','SELECT'].includes(activeEl.tagName);
+  const modalOpen=document.getElementById('modal') && !document.getElementById('modal').classList.contains('hidden');
+  if(editing||modalOpen)return;
+  const before=JSON.stringify((db.attendance||[]).filter(a=>a.trainerId===current.id).map(a=>[a.id,a.date,a.status,a.inspectedAt]));
+  await loadRemote();
+  const after=JSON.stringify((db.attendance||[]).filter(a=>a.trainerId===current.id).map(a=>[a.id,a.date,a.status,a.inspectedAt]));
+  if(mode==='master' && ['Inspection','AttendanceControl','Attendance'].includes(window.activeMaster) && !pendingMutations && !remoteSyncBusy)renderMaster(window.activeMaster);
+  if(mode==='employee' && before!==after && ['Attendance','Overview'].includes(window.activeEmployee||''))renderEmployee(window.activeEmployee||'Attendance');
+},10000);
+function logout(){stopCamera();current=null;localStorage.removeItem('stsEmployeeSession');localStorage.removeItem('stsEmployeeMode');localStorage.removeItem('stsEmployeeActive');document.getElementById('portal').innerHTML='';document.getElementById('portal').classList.add('hidden');document.getElementById('loginView').classList.remove('hidden');document.getElementById('topUser').textContent='';document.getElementById('loginPw').value='';}
+</script></body></html>
